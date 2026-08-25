@@ -56,11 +56,12 @@ body{
 
 button{font:inherit}
 
-/* Secciones adaptadas para centrar contenido absoluto sin recortes */
+/* Secciones adaptadas para cubrir toda la pantalla a 100vh */
 section{
   position:relative; 
-  min-height:100vh; 
-  height: 100%; 
+  width: 100%;
+  height: 100vh; 
+  min-height: 100vh;
   padding:0; 
   display:flex; 
   align-items:center; 
@@ -88,7 +89,7 @@ p{line-height:1.7}
    ========================================== */
 #envelope {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url('img/01Fondo.png');
   background-size: cover;
   background-position: center;
@@ -192,7 +193,7 @@ p{line-height:1.7}
 }
 
 /* ==========================================
-    ESTILOS GENERALES PARA CAPAS APILADAS (CORREGIDO PARA LATERALES)
+    ESTILOS GENERALES PARA CAPAS APILADAS
    ========================================== */
 .capa-fondo {
   position: absolute;
@@ -200,7 +201,7 @@ p{line-height:1.7}
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ajustado para que el fondo tampoco recorte los laterales */
+  object-fit: cover; /* Cubre toda la pantalla sin dejar espacios vacíos */
   object-position: center;
   pointer-events: none;
 }
@@ -566,8 +567,8 @@ p{line-height:1.7}
   <main id="content" class="hidden">
 
     <!-- VISTA 2 -->
-    <section id="vista2" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista2" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/02fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/02trazos.png" alt="Trazos" class="capa-animada trazos-capa">
         <img src="img/02textos.png" alt="Textos" class="capa-animada textos-capa">
@@ -577,8 +578,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 3 -->
-    <section id="vista3" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista3" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/03fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/03trazo.png" alt="Trazos" class="capa-animada trazos-capa-3">
         <img src="img/03texto.png" alt="Textos" class="capa-animada texto-capa-3">
@@ -587,8 +588,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 4 -->
-    <section id="vista4" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista4" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/04fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/04trazo.png" alt="Trazo" class="capa-animada trazo-capa-4">
         <img src="img/04texto.png" alt="Texto" class="capa-animada texto-capa-4">
@@ -597,8 +598,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 5 -->
-    <section id="vista5" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista5" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/05fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/05trazo.png" alt="Trazo" class="capa-animada trazo-capa-5">
         <img src="img/05texto.png" alt="Texto" class="capa-animada texto-capa-5">
@@ -633,8 +634,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 6 -->
-    <section id="vista6" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista6" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/06fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/06trazo.png" alt="Trazo" class="capa-animada trazo-capa-6">
         <img src="img/06texto.png" alt="Texto" class="capa-animada texto-capa-6">
@@ -645,8 +646,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 7 -->
-    <section id="vista7" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista7" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/07fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/07trazo.png" alt="Trazo" class="capa-animada trazo-capa-7">
         <img src="img/07texto.png" alt="Texto" class="capa-animada texto-capa-7">
@@ -677,8 +678,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 8: NUESTRA CANCIÓN -->
-    <section id="vista8" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista8" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/08fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/08trazo.png" alt="Trazo" class="capa-animada trazo-capa-8">
         <img src="img/08music.png" alt="Música" class="capa-animada music-capa-8 music-wrapper-v8">
@@ -699,8 +700,8 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 9: PASTEL INTERACTIVO -->
-    <section id="vista9" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
+    <section id="vista9" style="background-color: var(--paper);">
+      <div class="container">
         <img src="img/09fondo.png" alt="Fondo" class="capa-fondo">
         <img src="img/09trazo.png" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
         <img src="img/09texto.png" alt="Texto" class="capa-animada" style="opacity: 1; transform: translateY(0); z-index: 2;">
@@ -717,7 +718,7 @@ p{line-height:1.7}
     </section>
 
     <!-- 10 & 11. EL REGALO SORPRESA -->
-    <section class="gift" style="height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
+    <section class="gift">
       <div class="container" style="padding: 40px 6vw; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
         <div class="kicker-texto" style="color:var(--wine)">10 · Otro regalo</div>
         <h2>Resulta que todavía me quedaba<br>una cosa más...</h2>
@@ -736,7 +737,7 @@ p{line-height:1.7}
     </section>
 
     <!-- 12. CIERRE -->
-    <section class="final" style="height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
+    <section class="final">
       <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
         <div class="kicker-texto" style="margin-bottom:10px; color:var(--wine)">El final de la carta</div>
         <h2>Feliz Cumpleaños</h2>
