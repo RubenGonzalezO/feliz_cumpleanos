@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1080 1920">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-size: 70px;
+      }
+
+      .st1 {
+        fill: #dda15f;
+        font-family: Poppins-Bold, Poppins;
+        font-weight: 700;
+      }
+
+      .st2 {
+        font-family: Poppins-Regular, Poppins;
+      }
+
+      .st2, .st3 {
+        fill: #f5e5cf;
+      }
+
+      .st3 {
+        font-family: Poppins-Light, Poppins;
+        font-size: 36px;
+        font-weight: 300;
+      }
+    </style>
+  </defs>
+  <text class="st3" transform="translate(150 421.42)"><tspan x="0" y="0">Sería esta.</tspan></text>
+  <text class="st0" transform="translate(148.61 209.37)"><tspan class="st2"><tspan x="0" y="0">Si nuestra historia</tspan></tspan><tspan class="st2" x="0" y="68.4">tuviera una </tspan><tspan class="st1" x="417.9" y="68.4">banda</tspan><tspan class="st1"><tspan x="0" y="136.8">sonora...</tspan></tspan></text>
+</svg>

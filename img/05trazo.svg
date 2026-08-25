@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1080 1920">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0, .st1 {
+        fill: #fdf0e9;
+      }
+
+      .st2 {
+        fill: none;
+        stroke: #fdf0e9;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .st1 {
+        font-family: Poppins-Light, Poppins;
+        font-size: 25px;
+        font-weight: 300;
+        letter-spacing: .2em;
+      }
+    </style>
+  </defs>
+  <g>
+    <text class="st1" transform="translate(150 102.37)"><tspan x="0" y="0">04 • NUESTROS RECUERDOS</tspan></text>
+    <circle class="st0" cx="107.02" cy="94.15" r="5.96"/>
+  </g>
+  <path class="st2" d="M111.42,0c-2.86,9.3-4.4,19.19-4.4,29.43v262.85c0,55.23-44.77,100-100,100H0"/>
+</svg>
