@@ -196,6 +196,11 @@ p{line-height:1.7}
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Corrección responsiva general para que los textos en SVG/Capas no se desborden en móviles */
+svg, img.capa-animada {
+  max-width: 100%;
+}
+
 /* ==========================================
     VISTAS ANIMACIONES
    ========================================== */
@@ -469,7 +474,6 @@ p{line-height:1.7}
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  /* Transición más lenta (0.6s) para que el cambio de velas sea sutil y pausado */
   transition: opacity 0.6s ease;
 }
 
@@ -509,10 +513,10 @@ p{line-height:1.7}
 .btn-gen:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
 
 .final{background:var(--paper);color:var(--ink);text-align:center;position:relative;padding:40px 6vw 50px; font-family: 'Poppins', sans-serif;}
-.final h2{font-size:clamp(2rem,5vw,3rem);color:var(--accent);margin:10px 0}
-.final-sub{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(2.5rem,6vw,4rem);color:var(--wine);line-height:1;margin-bottom:15px}
-.final-copy{max-width:500px;margin:0 auto 15px;color:var(--muted);font-size:0.85rem}
-.final-love{color:var(--accent);font-size:1rem;margin-bottom:15px}
+.final h2{font-size:clamp(1.8rem, 6vw, 3rem); color:var(--accent); margin:10px 0; word-break: break-word;}
+.final-sub{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(2.2rem, 7vw, 4rem);color:var(--wine);line-height:1;margin-bottom:15px}
+.final-copy{max-width:500px;margin:0 auto 15px;color:var(--muted);font-size:0.85rem; padding: 0 10px;}
+.final-love{color:var(--accent);font-size:1rem;margin-bottom:15px; padding: 0 10px;}
 .final-sign{font-family:"Brush Script MT",cursive;font-size:2rem;color:var(--wine);line-height:1.2;margin-bottom:8px}
 .footer-bar{position:absolute;bottom:0;left:0;right:0;background:var(--paper-dark);color:#d8ceca;padding:10px;font:10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
 
@@ -674,7 +678,7 @@ p{line-height:1.7}
       </div>
     </section>
 
-    <!-- VISTA 9: PASTEL INTERACTIVO (CORREGIDO A SVG FONDO/TRAZO Y PNGs LENTOS) -->
+    <!-- VISTA 9: PASTEL INTERACTIVO -->
     <section id="vista9" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
         <img src="img/09fondo.svg" alt="Fondo" class="capa-fondo">
