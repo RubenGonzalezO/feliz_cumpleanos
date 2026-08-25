@@ -63,12 +63,12 @@ p{line-height:1.7}
 .hidden{display:none!important}
 
 /* ==========================================
-    VISTA 1: PORTADA DE SOBRE (SVG)
+    VISTA 1: PORTADA DE SOBRE (PNG)
    ========================================== */
 #envelope {
   width: 100%;
   height: 100%;
-  background-image: url('img/01Fondo.svg');
+  background-image: url('img/01Fondo.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -128,7 +128,7 @@ p{line-height:1.7}
 }
 
 .btn-custom {
-  background-image: url('img/01vineta_abrir_sobre.svg');
+  background-image: url('img/01vineta_abrir_sobre.png');
   background-size: cover;
   background-position: center;
   border: none;
@@ -171,7 +171,7 @@ p{line-height:1.7}
 }
 
 /* ==========================================
-    ESTILOS GENERALES PARA CAPAS APILADAS
+    ESTILOS GENERALES PARA CAPAS APILADAS (PNG ADAPTABLE)
    ========================================== */
 .capa-fondo {
   position: absolute;
@@ -179,7 +179,8 @@ p{line-height:1.7}
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
 }
 
@@ -189,16 +190,12 @@ p{line-height:1.7}
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Corrección responsiva general para que los textos en SVG/Capas no se desborden en móviles */
-svg, img.capa-animada {
-  max-width: 100%;
 }
 
 /* ==========================================
@@ -329,7 +326,8 @@ svg, img.capa-animada {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -343,7 +341,7 @@ svg, img.capa-animada {
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.vale-item img { width: 100%; height: 100%; object-fit: fill; }
+.vale-item img { width: 100%; height: 100%; object-fit: contain; }
 .vale-item:hover { transform: translateY(-1.5px); }
 .vale-item:active { transform: scale(0.99) translateY(0px); }
 .vale-item.bounce { animation: miniSaltoSutil 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -472,7 +470,8 @@ svg, img.capa-animada {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   pointer-events: none;
   transition: opacity 0.6s ease;
 }
@@ -528,17 +527,17 @@ svg, img.capa-animada {
 
 <div class="mobile-container" id="webMasterContainer">
 
-  <!-- VISTA 1: PORTADA DE SOBRE (SVG) -->
+  <!-- VISTA 1: PORTADA DE SOBRE (PNG) -->
   <section id="envelope">
     <div class="espacio-superior-fondo"></div>
     <div class="envelope-wrap" id="openBtn">
-      <img src="img/01Sobre_cerrado.svg" alt="Sobre" class="envelope-img" id="envelopeImg">
+      <img src="img/01Sobre_cerrado.png" alt="Sobre" class="envelope-img" id="envelopeImg">
     </div>
     <div class="bottom-zone" id="bottomZone">
       <button class="btn-custom" id="actionBtn">Abre la carta</button>
       <div class="subtexto-inferior" id="hintText" style="margin-top: 10px;">Pulsa para descubrir lo que preparé para ti.</div>
       <div id="scrollArrow" style="display: none; margin-top: 10px;">
-        <img src="img/01Flecha_abajo.svg" alt="Desliza hacia abajo" class="flecha-animada" id="arrowTrigger">
+        <img src="img/01Flecha_abajo.png" alt="Desliza hacia abajo" class="flecha-animada" id="arrowTrigger">
       </div>
     </div>
   </section>
@@ -548,40 +547,40 @@ svg, img.capa-animada {
     <!-- VISTA 2 -->
     <section id="vista2" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/02fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/02trazos.svg" alt="Trazos" class="capa-animada trazos-capa">
-        <img src="img/02textos.svg" alt="Textos" class="capa-animada textos-capa">
-        <img src="img/02Foto.svg" alt="Marco Foto" class="capa-animada foto-capa">
-        <img src="img/02textos_abajo.svg" alt="Textos inferiores" class="capa-animada textos-abajo-capa">
+        <img src="img/02fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/02trazos.png" alt="Trazos" class="capa-animada trazos-capa">
+        <img src="img/02textos.png" alt="Textos" class="capa-animada textos-capa">
+        <img src="img/02Foto.png" alt="Marco Foto" class="capa-animada foto-capa">
+        <img src="img/02textos_abajo.png" alt="Textos inferiores" class="capa-animada textos-abajo-capa">
       </div>
     </section>
 
     <!-- VISTA 3 -->
     <section id="vista3" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/03fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/03trazo.svg" alt="Trazos" class="capa-animada trazos-capa-3">
-        <img src="img/03texto.svg" alt="Textos" class="capa-animada texto-capa-3">
-        <img src="img/03calendario.svg" alt="Calendario" class="capa-animada calendario-capa-3">
+        <img src="img/03fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/03trazo.png" alt="Trazos" class="capa-animada trazos-capa-3">
+        <img src="img/03texto.png" alt="Textos" class="capa-animada texto-capa-3">
+        <img src="img/03calendario.png" alt="Calendario" class="capa-animada calendario-capa-3">
       </div>
     </section>
 
     <!-- VISTA 4 -->
     <section id="vista4" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/04fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/04trazo.svg" alt="Trazo" class="capa-animada trazo-capa-4">
-        <img src="img/04texto.svg" alt="Texto" class="capa-animada texto-capa-4">
-        <img src="img/04elementos.svg" alt="Elementos" class="capa-animada elementos-capa-4">
+        <img src="img/04fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/04trazo.png" alt="Trazo" class="capa-animada trazo-capa-4">
+        <img src="img/04texto.png" alt="Texto" class="capa-animada texto-capa-4">
+        <img src="img/04elementos.png" alt="Elementos" class="capa-animada elementos-capa-4">
       </div>
     </section>
 
     <!-- VISTA 5 -->
     <section id="vista5" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/05fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/05trazo.svg" alt="Trazo" class="capa-animada trazo-capa-5">
-        <img src="img/05texto.svg" alt="Texto" class="capa-animada texto-capa-5">
+        <img src="img/05fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/05trazo.png" alt="Trazo" class="capa-animada trazo-capa-5">
+        <img src="img/05texto.png" alt="Texto" class="capa-animada texto-capa-5">
         
         <div class="capa-animada carrusel-capa-5 carrusel-wrapper-v5">
           <div class="carousel-container-v5" id="carouselV5">
@@ -615,42 +614,42 @@ svg, img.capa-animada {
     <!-- VISTA 6 -->
     <section id="vista6" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/06fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/06trazo.svg" alt="Trazo" class="capa-animada trazo-capa-6">
-        <img src="img/06texto.svg" alt="Texto" class="capa-animada texto-capa-6">
-        <img src="img/06cuadro1.svg" alt="Cuadro 1" class="capa-animada cuadro1-capa-6">
-        <img src="img/06cuadro2.svg" alt="Cuadro 2" class="capa-animada cuadro2-capa-6">
-        <img src="img/06cuadro3.svg" alt="Cuadro 3" class="capa-animada cuadro3-capa-6">
+        <img src="img/06fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/06trazo.png" alt="Trazo" class="capa-animada trazo-capa-6">
+        <img src="img/06texto.png" alt="Texto" class="capa-animada texto-capa-6">
+        <img src="img/06cuadro1.png" alt="Cuadro 1" class="capa-animada cuadro1-capa-6">
+        <img src="img/06cuadro2.png" alt="Cuadro 2" class="capa-animada cuadro2-capa-6">
+        <img src="img/06cuadro3.png" alt="Cuadro 3" class="capa-animada cuadro3-capa-6">
       </div>
     </section>
 
     <!-- VISTA 7 -->
     <section id="vista7" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/07fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/07trazo.svg" alt="Trazo" class="capa-animada trazo-capa-7">
-        <img src="img/07texto.svg" alt="Texto" class="capa-animada texto-capa-7">
+        <img src="img/07fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/07trazo.png" alt="Trazo" class="capa-animada trazo-capa-7">
+        <img src="img/07texto.png" alt="Texto" class="capa-animada texto-capa-7">
         
         <div class="capa-animada vales-capa-7 vales-wrapper-v7">
           <div class="vale-item" id="valeBeso" style="top: 200px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07beso1.svg" alt="Beso 1" id="imgBeso1">
-            <img src="img/07beso2.svg" alt="Beso 2" id="imgBeso2" class="inactive">
+            <img src="img/07beso1.png" alt="Beso 1" id="imgBeso1">
+            <img src="img/07beso2.png" alt="Beso 2" id="imgBeso2" class="inactive">
           </div>
           <div class="vale-item" id="valeCine" style="top: 315px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07cine1.svg" alt="Cine 1" id="imgCine1">
-            <img src="img/07cine2.svg" alt="Cine 2" id="imgCine2" class="inactive">
+            <img src="img/07cine1.png" alt="Cine 1" id="imgCine1">
+            <img src="img/07cine2.png" alt="Cine 2" id="imgCine2" class="inactive">
           </div>
           <div class="vale-item" id="valeComida" style="top: 430px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07comida1.svg" alt="Comida 1" id="imgComida1">
-            <img src="img/07comida2.svg" alt="Comida 2" id="imgComida2" class="inactive">
+            <img src="img/07comida1.png" alt="Comida 1" id="imgComida1">
+            <img src="img/07comida2.png" alt="Comida 2" id="imgComida2" class="inactive">
           </div>
           <div class="vale-item" id="valeAbrazo" style="top: 545px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07abrazo1.svg" alt="Abrazo 1" id="imgAbrazo1">
-            <img src="img/07abrazo2.svg" alt="Abrazo 2" id="imgAbrazo2" class="inactive">
+            <img src="img/07abrazo1.png" alt="Abrazo 1" id="imgAbrazo1">
+            <img src="img/07abrazo2.png" alt="Abrazo 2" id="imgAbrazo2" class="inactive">
           </div>
           <div class="vale-item" id="valeDeseo" style="top: 660px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07deseo1.svg" alt="Deseo 1" id="imgDeseo1">
-            <img src="img/07deseo2.svg" alt="Deseo 2" id="imgDeseo2" class="inactive">
+            <img src="img/07deseo1.png" alt="Deseo 1" id="imgDeseo1">
+            <img src="img/07deseo2.png" alt="Deseo 2" id="imgDeseo2" class="inactive">
           </div>
         </div>
       </div>
@@ -659,10 +658,10 @@ svg, img.capa-animada {
     <!-- VISTA 8: NUESTRA CANCIÓN -->
     <section id="vista8" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/08fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/08trazo.svg" alt="Trazo" class="capa-animada trazo-capa-8">
-        <img src="img/08music.svg" alt="Música" class="capa-animada music-capa-8 music-wrapper-v8">
-        <img src="img/08texto.svg" alt="Texto" class="capa-animada music-capa-8 music-wrapper-v8" style="z-index: 3;">
+        <img src="img/08fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/08trazo.png" alt="Trazo" class="capa-animada trazo-capa-8">
+        <img src="img/08music.png" alt="Música" class="capa-animada music-capa-8 music-wrapper-v8">
+        <img src="img/08texto.png" alt="Texto" class="capa-animada music-capa-8 music-wrapper-v8" style="z-index: 3;">
         
         <audio id="audioCancion" src="audio/musica.mp3" preload="auto"></audio>
 
@@ -681,14 +680,14 @@ svg, img.capa-animada {
     <!-- VISTA 9: PASTEL INTERACTIVO -->
     <section id="vista9" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
       <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/09fondo.svg" alt="Fondo" class="capa-fondo">
-        <img src="img/09trazo.svg" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
-        <img src="img/09texto.svg" alt="Texto" class="capa-animada" style="opacity: 1; transform: translateY(0); z-index: 2;">
+        <img src="img/09fondo.png" alt="Fondo" class="capa-fondo">
+        <img src="img/09trazo.png" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
+        <img src="img/09texto.png" alt="Texto" class="capa-animada" style="opacity: 1; transform: translateY(0); z-index: 2;">
         
-        <!-- Capas del pastel interactivo en PNG con transición lenta -->
+        <!-- Capas del pastel interactivo en PNG -->
         <div class="cake-wrapper-v9" style="z-index: 3;">
-          <img src="img/09pasteloff.svg" alt="Pastel apagado" id="imgPastelOff">
-          <img src="img/09pastelon.svg" alt="Pastel encendido" id="imgPastelOn" class="inactive">
+          <img src="img/09pasteloff.png" alt="Pastel apagado" id="imgPastelOff">
+          <img src="img/09pastelon.png" alt="Pastel encendido" id="imgPastelOn" class="inactive">
         </div>
 
         <!-- Zona interactiva para hacer clic sobre el pastel -->
@@ -760,7 +759,7 @@ function abrirSobre() {
     envelopeImg.classList.add('fade-out');
     
     setTimeout(() => {
-      envelopeImg.src = 'img/01Sobre_abierto.svg';
+      envelopeImg.src = 'img/01Sobre_abierto.png';
       actionBtn.style.display = 'none';
       if (hintText) hintText.style.display = 'none';
       if (scrollArrow) scrollArrow.style.display = 'block';
