@@ -55,8 +55,29 @@ body{
 .mobile-container { -ms-overflow-style: none; scrollbar-width: none; }
 
 button{font:inherit}
-section{position:relative; min-height:100vh; height: 100%; padding:0; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;}
-.container{width:100%; height:100%; position:relative;}
+
+/* Secciones adaptadas para centrar contenido absoluto sin recortes */
+section{
+  position:relative; 
+  min-height:100vh; 
+  height: 100%; 
+  padding:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden; 
+  flex-shrink:0;
+}
+
+.container{
+  width:100%; 
+  height:100%; 
+  position:relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 h1,h2{font-weight:400}
 p{line-height:1.7}
 .script{font-family:"Brush Script MT","Segoe Script",cursive; font-style:italic}
@@ -171,7 +192,7 @@ p{line-height:1.7}
 }
 
 /* ==========================================
-    ESTILOS GENERALES PARA CAPAS APILADAS (PNG ADAPTABLE)
+    ESTILOS GENERALES PARA CAPAS APILADAS (CORREGIDO PARA LATERALES)
    ========================================== */
 .capa-fondo {
   position: absolute;
@@ -179,7 +200,7 @@ p{line-height:1.7}
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   pointer-events: none;
 }
