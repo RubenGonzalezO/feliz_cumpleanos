@@ -34,13 +34,10 @@
 html{scroll-behavior:smooth}
 body{
   font-family: Georgia, "Times New Roman", serif; color:var(--ink);
-  background: #1a1412; /* Fondo oscuro elegante para los laterales en PC */
+  background: #1a1412;
   display:flex; justify-content:center; align-items:center; min-height:100vh; overflow:hidden;
 }
 
-/* ==========================================
-    ADAPTACIÓN: PC vs CELULAR
-   ========================================== */
 .mobile-container {
   width: 430px;
   max-width: 100%;
@@ -53,7 +50,6 @@ body{
   box-shadow: 0 0 40px rgba(0,0,0,0.6);
 }
 
-/* En celulares (ancho menor o igual a 480px), ocupa toda la pantalla de lado a lado */
 @media screen and (max-width: 480px) {
   .mobile-container {
     width: 100%;
@@ -83,12 +79,9 @@ section{
 .container{width:100%; height:100%; position:relative;}
 h1,h2{font-weight:400}
 p{line-height:1.7}
-.script{font-family:"Brush Script MT","Segoe Script",cursive; font-style:italic}
 .hidden{display:none!important}
 
-/* ==========================================
-    VISTA 1: PORTADA DE SOBRE (SVG)
-   ========================================== */
+/* VISTA 1 */
 #envelope {
   background-color: var(--color-claro); 
   width: 100%; 
@@ -110,50 +103,27 @@ p{line-height:1.7}
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .envelope-img.inactive { opacity: 0; }
-.envelope-img.jump {
-  transform: scale(1.05) translateY(-10px);
-}
+.envelope-img.jump { transform: scale(1.05) translateY(-10px); }
 
 .interactive-prompt-v1 {
-  position: absolute;
-  top: 79%;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
+  position: absolute; top: 79%; left: 0; width: 100%;
+  text-align: center; z-index: 10; display: flex;
+  flex-direction: column; align-items: center; justify-content: center; padding: 0 20px;
 }
 
 .btn-abrir-carta {
   background-image: url('img/01vineta_abrir_sobre.svg');
-  background-size: cover;
-  background-position: center;
-  border: none;
-  color: var(--color-marron);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  padding: 12px 36px;
-  cursor: pointer;
-  border-radius: 999px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, opacity 0.3s ease;
+  background-size: cover; background-position: center; border: none;
+  color: var(--color-marron); font-family: 'Poppins', sans-serif;
+  font-weight: 600; font-size: 0.85rem; padding: 12px 36px;
+  cursor: pointer; border-radius: 999px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
 }
-.btn-abrir-carta:hover {
-  transform: translateY(-2px);
-}
+.btn-abrir-carta:hover { transform: translateY(-2px); }
 
 .subtext-abrir-carta {
-  font-family: 'Poppins', sans-serif;
-  font-size: 11px;
-  color: #624f48;
-  margin-top: 10px;
-  font-weight: 300;
-  opacity: 0.9;
+  font-family: 'Poppins', sans-serif; font-size: 11px; color: #624f48;
+  margin-top: 10px; font-weight: 300; opacity: 0.9;
 }
 
 @keyframes bounce {
@@ -163,37 +133,21 @@ p{line-height:1.7}
 }
 
 .flecha-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: contain; object-position: center;
-  cursor: pointer;
-  z-index: 20;
-  display: none; 
-  animation: bounce 1.6s infinite ease-in-out;
-  pointer-events: auto;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: center; cursor: pointer;
+  z-index: 20; display: none; animation: bounce 1.6s infinite ease-in-out; pointer-events: auto;
 }
 
 .envelope-clickable-area {
-  position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 60%; height: 35%; cursor: pointer; z-index: 5;
 }
 
-/* ==========================================
-    ESTILOS GENERALES PARA CAPAS APILADAS
-   ========================================== */
+/* CAPAS APILADAS GENERALES */
 .capa-animada {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(20px);
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: center; pointer-events: none;
+  opacity: 0; transform: translateY(20px);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -228,110 +182,49 @@ p{line-height:1.7}
 #vista8.visible .texto-capa-8 { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
 #vista8.visible .music-capa-8 { opacity: 1; transform: translateY(0); transition-delay: 0.5s; z-index: 2; pointer-events: auto; }
 
-/* ==========================================
-    ESTILOS VISTA 5 (CARRUSEL)
-   ========================================== */
+#vista10.visible .trazo-capa-10 { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+#vista10.visible .texto-capa-10 { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+#vista10.visible .gift-wrapper-v10 { opacity: 1; transform: translateY(0); transition-delay: 0.5s; z-index: 3; pointer-events: auto; }
+
+/* VISTA 12 (CIERRE CON CAPAS SVG) */
+#vista12.visible .trazo-capa-12 { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+#vista12.visible .texto-capa-12 { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+#vista12.visible .texto2-capa-12 { opacity: 1; transform: translateY(0); transition-delay: 0.5s; z-index: 2; }
+
+/* VISTA 5 (CARRUSEL) */
 .carrusel-wrapper-v5 {
-  position: absolute;
-  top: 36%; 
-  left: 0;
-  width: 100%;
-  height: 60%; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: auto;
+  position: absolute; top: 36%; left: 0; width: 100%; height: 60%; 
+  display: flex; flex-direction: column; align-items: center; pointer-events: auto;
 }
-
 .carousel-container-v5 {
-  width: 100%;
-  height: 85%; 
-  display: flex;
-  gap: 24px;
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch; 
-  touch-action: pan-x; 
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 0 calc(50% - 125px);
-  align-items: center;
-  box-sizing: border-box;
-  cursor: grab;
-  user-select: none;
+  width: 100%; height: 85%; display: flex; gap: 24px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch; touch-action: pan-x; 
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 0 calc(50% - 125px); align-items: center; box-sizing: border-box; cursor: grab; user-select: none;
 }
-
 .carousel-container-v5:active { cursor: grabbing; }
 .carousel-container-v5::-webkit-scrollbar { display: none; }
-.carousel-container-v5 { -ms-overflow-style: none; scrollbar-width: none; }
 
 .card-item-v5 {
-  flex: 0 0 250px;
-  height: 380px;
-  scroll-snap-align: center;
-  border-radius: 24px;
-  overflow: hidden;
-  position: relative;
-  background: #5a4542;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  display: grid;
-  place-items: center;
-  transition: transform 0.3s ease;
-  pointer-events: auto;
+  flex: 0 0 250px; height: 380px; scroll-snap-align: center;
+  border-radius: 24px; overflow: hidden; position: relative;
+  background: #5a4542; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: grid; place-items: center; transition: transform 0.3s ease; pointer-events: auto;
 }
-
 .card-item-v5 img { pointer-events: none; }
 
-.scroll-indicators-v5 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 10px;
-}
-
-.dot-v5 {
-  width: 7px;
-  height: 7px;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.dot-v5:hover { background-color: rgba(255, 255, 255, 0.8); }
+.scroll-indicators-v5 { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; }
+.dot-v5 { width: 7px; height: 7px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; transition: all 0.3s ease; cursor: pointer; }
 .dot-v5.active { width: 22px; background-color: #ffffff; border-radius: 10px; }
 
-/* ==========================================
-    ESTILOS VISTA 7 (VALES)
-   ========================================== */
-.vales-wrapper-v7 {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: auto;
-}
-
-.vales-wrapper-v7 img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: contain; object-position: center;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
+/* VISTA 7 (VALES) */
+.vales-wrapper-v7 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: auto; }
+.vales-wrapper-v7 img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: none; transition: opacity 0.3s ease; }
 .vales-wrapper-v7 img.inactive { opacity: 0; }
 
-.vale-item {
-  position: absolute;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+.vale-item { position: absolute; cursor: pointer; pointer-events: auto; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
 .vale-item img { width: 100%; height: 100%; object-fit: contain; }
 .vale-item:hover { transform: translateY(-1.5px); }
-.vale-item:active { transform: scale(0.99) translateY(0px); }
 .vale-item.bounce { animation: miniSaltoSutil 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
 
 @keyframes miniSaltoSutil {
@@ -340,166 +233,120 @@ p{line-height:1.7}
   100% { transform: scale(1) translateY(0); }
 }
 
-/* ==========================================
-    ESTILOS VISTA 8 (MÚSICA)
-   ========================================== */
-.music-wrapper-v8 {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-
-.interactive-player-v8 {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-
-.progress-v8 {
-  position: absolute;
-  top: 73.5%; 
-  left: 12%;
-  width: 76%;
-  height: 10px;
-  background: rgba(107, 92, 92, 0.25);
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  pointer-events: auto;
-}
-
-.progress-v8 i {
-  display: block;
-  width: 0%;
-  height: 100%;
-  background: #dda15f;
-  border-radius: 10px;
-  transition: width 0.1s linear;
-}
-
-.time-v8 {
-  position: absolute;
-  top: 76.2%; 
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: #f5e5cf;
-  text-align: center;
-  width: 100%;
-}
-
-.play-v8 {
-  position: absolute;
-  top: 81.5%; 
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  border: 0;
-  background: #dda15f;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease, background 0.2s ease;
-  pointer-events: auto;
-}
-
+/* VISTA 8 (MÚSICA) */
+.music-wrapper-v8 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.interactive-player-v8 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.progress-v8 { position: absolute; top: 73.5%; left: 12%; width: 76%; height: 10px; background: rgba(107, 92, 92, 0.25); border-radius: 10px; overflow: hidden; cursor: pointer; pointer-events: auto; }
+.progress-v8 i { display: block; width: 0%; height: 100%; background: #dda15f; border-radius: 10px; transition: width 0.1s linear; }
+.time-v8 { position: absolute; top: 76.2%; left: 50%; transform: translateX(-50%); font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; color: #f5e5cf; text-align: center; width: 100%; }
+.play-v8 { position: absolute; top: 81.5%; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; border-radius: 50%; border: 0; background: #dda15f; cursor: pointer; display: grid; place-items: center; box-shadow: 0 6px 16px rgba(0,0,0,0.25); transition: transform 0.2s ease; pointer-events: auto; }
 .play-v8:hover { transform: translateX(-50%) scale(1.06); }
+.icon-play { width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 18px solid white; margin-left: 3px; }
+.icon-pause { display: flex; gap: 5px; justify-content: center; align-items: center; }
+.icon-pause span { display: block; width: 5px; height: 20px; background: white; border-radius: 3px; }
 
-.icon-play {
-  width: 0; height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 18px solid white;
-  margin-left: 3px; 
+/* VISTA 9 (PASTEL / PUDÍN) */
+.cake-wrapper-v9 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.cake-wrapper-v9 img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: none; transition: opacity 0.3s ease; }
+.cake-wrapper-v9 img.inactive { opacity: 0; }
+.cake-clickable-area {
+  position: absolute; top: 38%; left: 50%; transform: translateX(-50%);
+  width: 55%; height: 35%; cursor: pointer; pointer-events: auto; z-index: 10;
 }
 
-.icon-pause {
+/* VISTA 10 (REGALO) */
+.gift-wrapper-v10 { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.gift-wrapper-v10 img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: none; transition: opacity 0.3s ease, transform 0.2s ease; }
+.gift-wrapper-v10 img.inactive { opacity: 0; }
+.gift-wrapper-v10 img.jump { transform: scale(1.05) translateY(-6px); }
+
+.gift-clickable-area-v10 {
+  position: absolute; top: 40%; left: 50%; transform: translateX(-50%);
+  width: 55%; height: 35%; cursor: pointer; pointer-events: auto; z-index: 10;
+}
+
+/* VISTA 11: EL RECUERDO */
+#vista11-recuerdo {
+  background-color: var(--color-claro);
+  position: relative;
   display: flex;
-  gap: 5px;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
-.icon-pause span {
-  display: block;
-  width: 5px; height: 20px;
-  background: white;
-  border-radius: 3px;
-}
-
-/* ==========================================
-    ESTILOS VISTA 9 (PASTEL)
-   ========================================== */
-.cake-wrapper-v9 {
+.capa-11cuadro {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
-
-.cake-wrapper-v9 img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: contain; object-position: center;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-.cake-clickable-area {
-  position: absolute;
-  top: 42%; left: 50%;
-  transform: translateX(-50%);
-  width: 55%; height: 26%;
-  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  background-color: #FAF4EE;
+  border-radius: 28px;
+  padding: 25px 21px;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+  width: 94.3%;
+  max-width: 380px;
   pointer-events: auto;
-  z-index: 10;
 }
 
-.cake-wrapper-v9 img.inactive { opacity: 0; }
-
-/* ==========================================
-    RESTO DE SECCIONES (10, 11, 12)
-   ========================================== */
-.gift{background:var(--color-claro);color:var(--ink);text-align:center; font-family: 'Poppins', sans-serif; padding: 40px 6vw;}
-.gift-box{width:160px;height:120px;background:#c87d63;position:relative;margin:25px auto 20px;cursor:pointer;box-shadow:var(--shadow);border-radius:6px}
-.gift-box:before{content:"";position:absolute;left:64px;top:0;width:32px;height:100%;background:#e0c4b0}
-.lid{position:absolute;left:-10px;top:-24px;width:180px;height:34px;background:#b56a52;transition:.8s;z-index:2;border-radius:4px}
-.lid:before{content:"";position:absolute;left:74px;top:0;width:32px;height:34px;background:#e0c4b0}
-.bow{position:absolute;z-index:3;left:50%;top:-45px;transform:translateX(-50%);font-size:38px}
-.gift-box.open .lid{transform:translateY(-65px) rotate(-4deg)}
-.art{max-width:400px;margin:20px auto 0;padding:20px;background:#faeedf;border-radius:16px;box-shadow:var(--shadow)}
-
-.btn-gen{
-  border:0; border-radius:999px; padding:12px 24px; background:var(--paper); color:var(--ink);
-  cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,.15); transition:.25s transform,.25s box-shadow;
-  font-family:Arial,sans-serif; font-size:0.85rem; letter-spacing:.05em;
+.contenedor-imagen-recuerdo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #e0e0e0;
 }
-.btn-gen:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
 
-.final{background:var(--color-claro);color:var(--ink);text-align:center;position:relative;padding:40px 6vw 50px; font-family: 'Poppins', sans-serif;}
-.final h2{font-size:clamp(1.8rem, 6vw, 3rem); color:var(--accent); margin:10px 0; word-break: break-word;}
-.final-sub{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(2.2rem, 7vw, 4rem);color:var(--wine);line-height:1;margin-bottom:15px}
-.final-copy{max-width:500px;margin:0 auto 15px;color:var(--muted);font-size:0.85rem; padding: 0 10px;}
-.final-love{color:var(--accent);font-size:1rem;margin-bottom:15px; padding: 0 10px;}
-.final-sign{font-family:"Brush Script MT",cursive;font-size:2rem;color:var(--wine);line-height:1.2;margin-bottom:8px}
-.footer-bar{position:absolute;bottom:0;left:0;right:0;background:var(--paper-dark);color:#d8ceca;padding:10px;font:10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.contenedor-imagen-recuerdo img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;
+}
+.contenedor-imagen-recuerdo:hover img { transform: scale(1.03); }
 
-.reveal{opacity:0;transform:translateY(30px);transition:1s}
-.reveal.visible{opacity:1;transform:none}
+.overlay-lupa {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
+}
+.contenedor-imagen-recuerdo:hover .overlay-lupa { opacity: 1; }
+.overlay-lupa span { color: white; font-size: 22px; background: rgba(0,0,0,0.5); padding: 8px; border-radius: 50%; }
+
+.textos-recuerdo h3 {
+  font-size: 14px; letter-spacing: 1.5px; margin: 15px 0 2px 0; color: #4a4a4a; font-family: 'Poppins', sans-serif; font-weight: 600;
+}
+.textos-recuerdo h4 {
+  font-size: 14px; letter-spacing: 1.5px; margin: 0 0 10px 0; color: #bfa17c; font-family: 'Poppins', sans-serif; font-weight: 600;
+}
+.textos-recuerdo p {
+  font-size: 12px; color: #666; margin-bottom: 18px; line-height: 1.4; font-family: 'Poppins', sans-serif; font-weight: 300;
+}
+
+.btn-descargar-recuerdo {
+  background-color: #624f48;
+  color: #ffffff; border: none; padding: 12px 26px; border-radius: 999px;
+  font-size: 12px; font-family: 'Poppins', sans-serif; font-weight: 500;
+  cursor: pointer; transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 10px rgba(98, 79, 72, 0.3);
+}
+.btn-descargar-recuerdo:hover { background-color: #4f3f39; transform: translateY(-1px); }
+
+/* Modal Zoom */
+.modal-overlay {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.85); z-index: 1000; justify-content: center; align-items: center; padding: 20px;
+}
+.modal-contenido { position: relative; max-width: 90%; max-height: 90%; }
+.modal-contenido img { max-width: 100%; max-height: 85vh; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); display: block; margin: 0 auto; }
+.cerrar-modal { position: absolute; top: -40px; right: 0; color: white; font-size: 35px; cursor: pointer; font-weight: bold; }
 </style>
 </head>
 <body>
 
 <div class="mobile-container" id="webMasterContainer">
 
-  <!-- VISTA 1: PORTADA DE SOBRE (SVG) -->
+  <!-- VISTA 1 -->
   <section id="envelope">
     <div class="container">
       <img src="img/01Fondo.svg" alt="Fondo" class="capa-fondo">
@@ -629,7 +476,7 @@ p{line-height:1.7}
       </div>
     </section>
 
-    <!-- VISTA 8: NUESTRA CANCIÓN -->
+    <!-- VISTA 8 -->
     <section id="vista8">
       <div class="container">
         <img src="img/08fondo.svg" alt="Fondo" class="capa-fondo">
@@ -651,7 +498,7 @@ p{line-height:1.7}
       </div>
     </section>
 
-    <!-- VISTA 9: PASTEL INTERACTIVO -->
+    <!-- VISTA 9 (PASTEL / PUDÍN) -->
     <section id="vista9">
       <div class="container">
         <img src="img/09fondo.svg" alt="Fondo" class="capa-fondo">
@@ -667,45 +514,66 @@ p{line-height:1.7}
       </div>
     </section>
 
-    <!-- 10 & 11. EL REGALO SORPRESA -->
-    <section class="gift" style="aspect-ratio: auto; min-height: 100vh;">
-      <div class="container" style="padding: 40px 6vw; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <div class="kicker-texto" style="color:var(--wine)">10 · Otro regalo</div>
-        <h2>Resulta que todavía me quedaba<br>una cosa más...</h2>
+    <!-- VISTA 10 -->
+    <section id="vista10">
+      <div class="container">
+        <img src="img/10fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/10trazo.svg" alt="Trazo" class="capa-animada trazo-capa-10">
+        <img src="img/10texto.svg" alt="Texto" class="capa-animada texto-capa-10">
         
-        <div class="gift-box" id="giftBox">
-          <div class="lid"></div>
-          <div class="bow">🎀</div>
+        <div class="capa-animada gift-wrapper-v10">
+          <img src="img/10regalocerrado.svg" alt="Regalo cerrado" id="foto11">
+          <img src="img/10regalobierto.svg" alt="Regalo abierto" id="imgRegaloAbierto" class="inactive">
         </div>
 
-        <div id="art" class="art hidden">
-          <div style="height:140px;border-radius:10px;background:#e0d2c7;display:grid;place-items:center;color:var(--muted);font:10px Arial,sans-serif;">[ IMAGEN ]</div>
-          <h3 style="margin:12px 0 4px;font-size:1.2rem;font-weight:400;color:var(--ink);">UN PEQUEÑO RECUERDO</h3>
-          <button class="btn-gen" style="background:var(--paper-dark);color:var(--paper);margin-top:10px;" onclick="alert('Aquí descargarás tu ilustración.')">Descargar</button>
+        <div class="gift-clickable-area-v10" id="giftToggleArea"></div>
+      </div>
+    </section>
+
+    <!-- VISTA 11: BLOQUE RECUERDO -->
+    <section id="vista11-recuerdo" class="hidden">
+      <div class="container">
+        <img src="img/11fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/11trazo.svg" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
+        
+        <div class="capa-11cuadro">
+          <div class="contenedor-imagen-recuerdo" onclick="abrirModalRecuerdo()">
+            <img id="imagenRecuerdoSrc" src="img/foto11.png" alt="Un pequeño recuerdo">
+            <div class="overlay-lupa"><span>🔍</span></div>
+          </div>
+
+          <div class="textos-recuerdo">
+            <h3>UN PEQUEÑO RECUERDO</h3>
+            <h4>PARA TI.</h4>
+            <p>Para que tengas un pedacito de este día guardado contigo.</p>
+          </div>
+
+          <button class="btn-descargar-recuerdo" onclick="descargarRecuerdo()">
+            Descargar recuerdo
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- 12. CIERRE -->
-    <section class="final" style="aspect-ratio: auto; min-height: 100vh;">
-      <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-        <div class="kicker-texto" style="margin-bottom:10px; color:var(--wine)">El final de la carta</div>
-        <h2>Feliz Cumpleaños</h2>
-        <div class="final-sub">Mi amor</div>
-        
-        <p class="final-copy">Gracias por existir, por ser tú y por permitirme formar parte de tu vida. Espero que este nuevo año esté lleno de momentos felices.</p>
-        
-        <div class="final-love">Te amo más de lo que estas palabras pueden explicar.</div>
-        
-        <div class="final-sign">
-          Nos vemos cuando regrese<br>
-          <span style="font-size:2.2rem">Te amo</span>
-        </div>
+    <!-- VISTA 12: CIERRE -->
+    <section id="vista12">
+      <div class="container">
+        <img src="img/12fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/12trazo.svg" alt="Trazo" class="capa-animada trazo-capa-12">
+        <img src="img/12texto.svg" alt="Texto" class="capa-animada texto-capa-12">
+        <img src="img/12texto2.svg" alt="Texto 2" class="capa-animada texto2-capa-12">
       </div>
-      <div class="footer-bar">HECHO CON AMOR • RUBEN GONZALEZ • 2026</div>
     </section>
 
   </main>
+</div>
+
+<!-- Modal -->
+<div id="modalImagenCompleta" class="modal-overlay" onclick="cerrarModalRecuerdo(event)">
+  <div class="modal-contenido">
+    <span class="cerrar-modal" onclick="cerrarModalRecuerdo()">&times;</span>
+    <img id="imagenModalZoom" src="" alt="Recuerdo ampliado">
+  </div>
 </div>
 
 <script>
@@ -716,20 +584,22 @@ const actionBtn = document.getElementById('actionBtn');
 const openClickArea = document.getElementById('openClickArea');
 const flechaImg = document.getElementById('flechaImg');
 const content = document.getElementById('content');
+const audio = document.getElementById('audioCancion');
+const playIcon = document.getElementById('playIcon');
+
+// Reducir el volumen de la canción en un 25% (queda al 75%)
+if (audio) {
+  audio.volume = 0.008;
+}
 
 function abrirCarta() {
   imgSobreCerrado.classList.add('jump');
-  
   setTimeout(() => {
     imgSobreCerrado.classList.add('inactive');
     imgSobreCerrado.classList.remove('jump');
-    
     imgSobreAbierto.classList.remove('inactive');
     imgSobreAbierto.classList.add('jump');
-    
-    setTimeout(() => {
-      imgSobreAbierto.classList.remove('jump');
-    }, 200);
+    setTimeout(() => imgSobreAbierto.classList.remove('jump'), 200);
 
     promptContainer.style.display = 'none';
     openClickArea.style.display = 'none';
@@ -740,13 +610,21 @@ function abrirCarta() {
 actionBtn.addEventListener('click', abrirCarta);
 openClickArea.addEventListener('click', abrirCarta);
 
+/* Al presionar la flecha: avanza de sección y reproduce la música automáticamente */
 flechaImg.addEventListener('click', () => {
   content.classList.remove('hidden');
   const primeraSeccion = content.querySelector('section');
-  if (primeraSeccion) {
-    primeraSeccion.scrollIntoView({ behavior: 'smooth' });
-  }
+  if (primeraSeccion) primeraSeccion.scrollIntoView({ behavior: 'smooth' });
   observeReveals();
+
+  if (audio) {
+    audio.play().then(() => {
+      playIcon.className = 'icon-pause';
+      playIcon.innerHTML = '<span></span><span></span>';
+    }).catch(e => {
+      console.log("Reproducción automática bloqueada por el navegador:", e);
+    });
+  }
 });
 
 /* CARRUSEL V5 */
@@ -797,13 +675,19 @@ if (carouselV5) {
   });
 }
 
-/* VALES V7 INTERACTIVOS */
-function configurarVale(idItem, idImg1, idImg2) {
+/* VALES V7 (Con persistencia en localStorage) */
+function configurarVale(idItem, idImg1, idImg2, storageKey) {
   const item = document.getElementById(idItem);
   const img1 = document.getElementById(idImg1);
   const img2 = document.getElementById(idImg2);
 
   if (item && img1 && img2) {
+    const seleccionadoGuardado = localStorage.getItem(storageKey);
+    if (seleccionadoGuardado === 'true') {
+      img1.classList.add('inactive');
+      img2.classList.remove('inactive');
+    }
+
     item.addEventListener('click', () => {
       item.classList.remove('bounce');
       void item.offsetWidth;
@@ -812,24 +696,24 @@ function configurarVale(idItem, idImg1, idImg2) {
       if (img1.classList.contains('inactive')) {
         img1.classList.remove('inactive');
         img2.classList.add('inactive');
+        localStorage.setItem(storageKey, 'false');
       } else {
         img1.classList.add('inactive');
         img2.classList.remove('inactive');
+        localStorage.setItem(storageKey, 'true');
       }
     });
   }
 }
 
-configurarVale('valeBeso', 'imgBeso1', 'imgBeso2');
-configurarVale('valeCine', 'imgCine1', 'imgCine2');
-configurarVale('valeComida', 'imgComida1', 'imgComida2');
-configurarVale('valeAbrazo', 'imgAbrazo1', 'imgAbrazo2');
-configurarVale('valeDeseo', 'imgDeseo1', 'imgDeseo2');
+configurarVale('valeBeso', 'imgBeso1', 'imgBeso2', 'vale_beso_sel');
+configurarVale('valeCine', 'imgCine1', 'imgCine2', 'vale_cine_sel');
+configurarVale('valeComida', 'imgComida1', 'imgComida2', 'vale_comida_sel');
+configurarVale('valeAbrazo', 'imgAbrazo1', 'imgAbrazo2', 'vale_abrazo_sel');
+configurarVale('valeDeseo', 'imgDeseo1', 'imgDeseo2', 'vale_deseo_sel');
 
 /* REPRODUCTOR V8 */
-const audio = document.getElementById('audioCancion');
 const playBtn = document.getElementById('playBtn');
-const playIcon = document.getElementById('playIcon');
 const progressBar = document.getElementById('progressBar');
 const progressIndicator = document.getElementById('progressIndicator');
 const timeIndicator = document.getElementById('timeIndicator');
@@ -878,7 +762,7 @@ if (audio) {
   });
 }
 
-/* PASTEL INTERACTIVO V9 */
+/* PASTEL V9 */
 const cakeToggleArea = document.getElementById('cakeToggleArea');
 const imgPastelOff = document.getElementById('imgPastelOff');
 const imgPastelOn = document.getElementById('imgPastelOn');
@@ -895,23 +779,71 @@ if (cakeToggleArea && imgPastelOff && imgPastelOn) {
   });
 }
 
-/* REGALO SORPRESA V10 */
-const giftBox = document.getElementById('giftBox');
-const artContainer = document.getElementById('art');
-if (giftBox && artContainer) {
-  giftBox.addEventListener('click', () => {
-    giftBox.classList.toggle('open');
-    if (giftBox.classList.contains('open')) {
-      artContainer.classList.remove('hidden');
-    } else {
-      artContainer.classList.add('hidden');
-    }
+/* REGALO V10 -> MUESTRA VISTA 11 AL HACER CLIC */
+const giftToggleArea = document.getElementById('giftToggleArea');
+const foto11 = document.getElementById('foto11');
+const imgRegaloAbierto = document.getElementById('imgRegaloAbierto');
+const vista11Recuerdo = document.getElementById('vista11-recuerdo');
+
+if (giftToggleArea && foto11 && imgRegaloAbierto && vista11Recuerdo) {
+  giftToggleArea.addEventListener('click', () => {
+    foto11.classList.add('jump');
+    setTimeout(() => foto11.classList.remove('jump'), 200);
+
+    imgRegaloAbierto.classList.remove('inactive');
+    foto11.classList.add('inactive');
+
+    vista11Recuerdo.classList.remove('hidden');
+    setTimeout(() => {
+      vista11Recuerdo.scrollIntoView({ behavior: 'smooth' });
+    }, 200);
   });
 }
 
-/* INTERSECTION OBSERVER PARA ANIMACIONES */
+/* Modal y Descarga Automática Ajustada */
+function abrirModalRecuerdo() {
+  const modal = document.getElementById('modalImagenCompleta');
+  const imgSrc = document.getElementById('imagenRecuerdoSrc').src;
+  document.getElementById('imagenModalZoom').src = imgSrc;
+  modal.style.display = 'flex';
+}
+
+function cerrarModalRecuerdo(event) {
+  if (!event || event.target.id === 'modalImagenCompleta' || event.target.classList.contains('cerrar-modal')) {
+    document.getElementById('modalImagenCompleta').style.display = 'none';
+  }
+}
+
+async function descargarRecuerdo() {
+  const imageUrl = document.getElementById('imagenRecuerdoSrc').src;
+  const fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1) || 'foto11.png';
+
+  try {
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(blobUrl);
+  } catch (error) {
+    const a = document.createElement('a');
+    a.href = imageUrl;
+    a.target = '_blank';
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+}
+
+/* INTERSECTION OBSERVER */
 function observeReveals() {
-  const reveals = document.querySelectorAll('.reveal, #vista2, #vista3, #vista4, #vista5, #vista6, #vista7, #vista8, #vista9');
+  const reveals = document.querySelectorAll('.reveal, #vista2, #vista3, #vista4, #vista5, #vista6, #vista7, #vista8, #vista9, #vista10, #vista11-recuerdo, #vista12');
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
