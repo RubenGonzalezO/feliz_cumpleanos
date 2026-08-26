@@ -63,71 +63,50 @@ p{line-height:1.7}
 .hidden{display:none!important}
 
 /* ==========================================
-    VISTA 1: PORTADA DE SOBRE (PNG)
+    VISTA 1: PORTADA DE SOBRE (PNG) - ACTUALIZADA
    ========================================== */
 #envelope {
-  width: 100%;
-  height: 100%;
-  background-image: url('img/01Fondo.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 30px 20px 20px 20px;
-  box-sizing: border-box;
-  text-align: center;
-  position: relative;
+  background-color: var(--paper); 
+  height: 765px; 
+  width: 100%; 
+  position: relative; 
+  overflow: hidden; 
+  flex-shrink: 0;
 }
 
-.espacio-superior-fondo {
-  width: 100%;
-  height: 275px;
-  pointer-events: none;
+/* Capa de fondo general de la portada */
+.capa-fondo {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: center; pointer-events: none;
 }
 
-.envelope-wrap {
-  width: 100%;
-  max-width: 240px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 0 auto;
-  cursor: pointer;
-}
-
+/* Manejo de estados de las imágenes del sobre con efecto de pequeño salto dinámico */
 .envelope-img {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: contain; object-position: center; pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.envelope-img.inactive { opacity: 0; }
+.envelope-img.jump {
+  transform: scale(1.05) translateY(-10px);
+}
+
+/* Contenedor interactivo inferior de la portada */
+.interactive-prompt-v1 {
+  position: absolute;
+  top: 610px;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  object-position: bottom;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-.envelope-img.opening {
-  transform: scale(1.04) translateY(-8px);
-}
-
-.envelope-img.fade-out {
-  opacity: 0;
-  transform: scale(0.96) translateY(10px);
-}
-
-.bottom-zone {
-  width: 100%;
+  text-align: center;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: auto;
-  padding-bottom: 25px;
+  justify-content: center;
+  padding: 0 20px;
 }
 
-.btn-custom {
+.btn-abrir-carta {
   background-image: url('img/01vineta_abrir_sobre.png');
   background-size: cover;
   background-position: center;
@@ -142,15 +121,15 @@ p{line-height:1.7}
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease, opacity 0.3s ease;
 }
-
-.btn-custom:hover {
+.btn-abrir-carta:hover {
   transform: translateY(-2px);
 }
 
-.subtexto-inferior {
+.subtext-abrir-carta {
   font-family: 'Poppins', sans-serif;
   font-size: 11px;
-  color: var(--color-claro);
+  color: #624f48;
+  margin-top: 10px;
   font-weight: 300;
   opacity: 0.9;
 }
@@ -161,29 +140,29 @@ p{line-height:1.7}
   60% { transform: translateY(-3px); }
 }
 
-.flecha-animada {
-  width: 28px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  animation: bounce 1.6s infinite ease-in-out;
+/* Flecha con las medidas y posición original de la capa + animación de rebote */
+.flecha-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
   cursor: pointer;
+  z-index: 20;
+  display: none; 
+  animation: bounce 1.6s infinite ease-in-out;
+  pointer-events: auto;
+}
+
+/* Área invisible para hacer clic directo sobre el sobre gráfico */
+.envelope-clickable-area {
+  position: absolute;
+  top: 380px; left: 50%; transform: translateX(-50%);
+  width: 250px; height: 180px; cursor: pointer; z-index: 5;
 }
 
 /* ==========================================
     ESTILOS GENERALES PARA CAPAS APILADAS (PNG ADAPTABLE)
    ========================================== */
-.capa-fondo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  pointer-events: none;
-}
-
 .capa-animada {
   position: absolute;
   top: 0;
@@ -527,18 +506,27 @@ p{line-height:1.7}
 
 <div class="mobile-container" id="webMasterContainer">
 
-  <!-- VISTA 1: PORTADA DE SOBRE (PNG) -->
+  <!-- VISTA 1: PORTADA DE SOBRE (PNG) - ACTUALIZADA -->
   <section id="envelope">
-    <div class="espacio-superior-fondo"></div>
-    <div class="envelope-wrap" id="openBtn">
-      <img src="img/01Sobre_cerrado.png" alt="Sobre" class="envelope-img" id="envelopeImg">
-    </div>
-    <div class="bottom-zone" id="bottomZone">
-      <button class="btn-custom" id="actionBtn">Abre la carta</button>
-      <div class="subtexto-inferior" id="hintText" style="margin-top: 10px;">Pulsa para descubrir lo que preparé para ti.</div>
-      <div id="scrollArrow" style="display: none; margin-top: 10px;">
-        <img src="img/01Flecha_abajo.png" alt="Desliza hacia abajo" class="flecha-animada" id="arrowTrigger">
+    <div class="container">
+      <!-- 1. Fondo de la portada -->
+      <img src="img/01Fondo.png" alt="Fondo" class="capa-fondo">
+      
+      <!-- 2. Sobre Cerrado / Sobre Abierto con manejo de estados y salto -->
+      <img src="img/01Sobre_cerrado.png" alt="Sobre cerrado" class="envelope-img" id="imgSobreCerrado">
+      <img src="img/01Sobre_abierto.png" alt="Sobre abierto" class="envelope-img inactive" id="imgSobreAbierto">
+      
+      <!-- 3. Botón y textos debajo del sobre -->
+      <div class="interactive-prompt-v1" id="promptContainer">
+        <button class="btn-abrir-carta" id="actionBtn">Abre la carta</button>
+        <div class="subtext-abrir-carta" id="hintText">Pulsa para descubrir lo que preparé para ti.</div>
       </div>
+
+      <!-- 4. Flecha con tamaño original de la capa y animación -->
+      <img src="img/01Flecha_abajo.png" alt="Desliza hacia abajo" class="flecha-layer" id="flechaImg">
+
+      <!-- Zona invisible para hacer clic directo sobre el sobre -->
+      <div class="envelope-clickable-area" id="openClickArea"></div>
     </div>
   </section>
 
@@ -737,57 +725,51 @@ p{line-height:1.7}
 </div>
 
 <script>
-const openTrigger = document.getElementById('openBtn');
+const imgSobreCerrado = document.getElementById('imgSobreCerrado');
+const imgSobreAbierto = document.getElementById('imgSobreAbierto');
+const promptContainer = document.getElementById('promptContainer');
 const actionBtn = document.getElementById('actionBtn');
-const envelopeImg = document.getElementById('envelopeImg');
-const bottomZone = document.getElementById('bottomZone');
-const hintText = document.getElementById('hintText');
-const scrollArrow = document.getElementById('scrollArrow');
-const arrowTrigger = document.getElementById('arrowTrigger');
+const openClickArea = document.getElementById('openClickArea');
+const flechaImg = document.getElementById('flechaImg');
 const content = document.getElementById('content');
 
-function abrirSobre() {
-  if (bottomZone) {
-    bottomZone.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    bottomZone.style.opacity = '0';
-    bottomZone.style.transform = 'translateY(10px)';
-  }
-
-  envelopeImg.classList.add('opening');
-
+function abrirCarta() {
+  // Aplicamos clase de salto dinámico antes de cambiar el estado
+  imgSobreCerrado.classList.add('jump');
+  
   setTimeout(() => {
-    envelopeImg.classList.add('fade-out');
+    imgSobreCerrado.classList.add('inactive');
+    imgSobreCerrado.classList.remove('jump');
+    
+    imgSobreAbierto.classList.remove('inactive');
+    imgSobreAbierto.classList.add('jump');
     
     setTimeout(() => {
-      envelopeImg.src = 'img/01Sobre_abierto.png';
-      actionBtn.style.display = 'none';
-      if (hintText) hintText.style.display = 'none';
-      if (scrollArrow) scrollArrow.style.display = 'block';
-      
-      if (bottomZone) {
-        bottomZone.style.opacity = '1';
-        bottomZone.style.transform = 'translateY(0)';
-      }
-      
-      envelopeImg.classList.remove('opening', 'fade-out');
-      envelopeImg.style.transform = 'scale(1) translateY(0)';
-    }, 250);
+      imgSobreAbierto.classList.remove('jump');
+    }, 200);
 
-  }, 300);
+    // Ocultamos el botón y su texto debajo
+    promptContainer.style.display = 'none';
+    openClickArea.style.display = 'none';
+
+    // Mostramos la flecha con su tamaño y posición original
+    flechaImg.style.display = 'block';
+  }, 150);
 }
 
-function revelarYDesplazar() {
+// Eventos de clic para abrir el sobre (tanto botón como clic directo sobre el gráfico)
+actionBtn.addEventListener('click', abrirCarta);
+openClickArea.addEventListener('click', abrirCarta);
+
+// Al hacer clic en la flecha, se despliegan los siguientes bloques y se hace scroll
+flechaImg.addEventListener('click', () => {
   content.classList.remove('hidden');
   const primeraSeccion = content.querySelector('section');
   if (primeraSeccion) {
     primeraSeccion.scrollIntoView({ behavior: 'smooth' });
   }
   observeReveals();
-}
-
-openTrigger.addEventListener('click', abrirSobre);
-actionBtn.addEventListener('click', abrirSobre);
-arrowTrigger.addEventListener('click', revelarYDesplazar);
+});
 
 /* CARRUSEL V5 */
 const carouselV5 = document.getElementById('carouselV5');
