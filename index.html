@@ -34,28 +34,52 @@
 html{scroll-behavior:smooth}
 body{
   font-family: Georgia, "Times New Roman", serif; color:var(--ink);
-  background:#1a1211; display:flex; justify-content:center; align-items:center; min-height:100vh; overflow:hidden;
+  background: #1a1412; /* Fondo oscuro elegante para los laterales en PC */
+  display:flex; justify-content:center; align-items:center; min-height:100vh; overflow:hidden;
 }
 
-/* Contenedor tipo móvil centrado en PC ajustado a 430 x 765 */
+/* ==========================================
+    ADAPTACIÓN: PC vs CELULAR
+   ========================================== */
 .mobile-container {
-  width: 100%;
-  max-width: 430px;
+  width: 430px;
+  max-width: 100%;
   height: 100vh;
-  max-height: 765px;
   background-color: var(--color-claro);
   position: relative;
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
   scroll-behavior: smooth;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* En celulares (ancho menor o igual a 480px), ocupa toda la pantalla de lado a lado */
+@media screen and (max-width: 480px) {
+  .mobile-container {
+    width: 100%;
+    height: 100vh;
+    box-shadow: none;
+  }
 }
 
 .mobile-container::-webkit-scrollbar { display: none; }
 .mobile-container { -ms-overflow-style: none; scrollbar-width: none; }
 
 button{font:inherit}
-section{position:relative; min-height:100vh; height: 100%; padding:0; display:flex; align-items:center; justify-content:center; overflow:hidden; flex-shrink:0;}
+section{
+  position:relative; 
+  width: 100%;
+  aspect-ratio: 430 / 765;
+  padding:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden; 
+  flex-shrink:0;
+  background-color: var(--color-claro);
+  margin-top: -1px;
+}
+
 .container{width:100%; height:100%; position:relative;}
 h1,h2{font-weight:400}
 p{line-height:1.7}
@@ -63,24 +87,23 @@ p{line-height:1.7}
 .hidden{display:none!important}
 
 /* ==========================================
-    VISTA 1: PORTADA DE SOBRE (PNG) - ACTUALIZADA
+    VISTA 1: PORTADA DE SOBRE (SVG)
    ========================================== */
 #envelope {
-  background-color: var(--paper); 
-  height: 765px; 
+  background-color: var(--color-claro); 
   width: 100%; 
+  aspect-ratio: 430 / 765;
   position: relative; 
   overflow: hidden; 
   flex-shrink: 0;
+  margin-top: 0;
 }
 
-/* Capa de fondo general de la portada */
 .capa-fondo {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   object-fit: contain; object-position: center; pointer-events: none;
 }
 
-/* Manejo de estados de las imágenes del sobre con efecto de pequeño salto dinámico */
 .envelope-img {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   object-fit: contain; object-position: center; pointer-events: none;
@@ -91,10 +114,9 @@ p{line-height:1.7}
   transform: scale(1.05) translateY(-10px);
 }
 
-/* Contenedor interactivo inferior de la portada */
 .interactive-prompt-v1 {
   position: absolute;
-  top: 610px;
+  top: 79%;
   left: 0;
   width: 100%;
   text-align: center;
@@ -107,7 +129,7 @@ p{line-height:1.7}
 }
 
 .btn-abrir-carta {
-  background-image: url('img/01vineta_abrir_sobre.png');
+  background-image: url('img/01vineta_abrir_sobre.svg');
   background-size: cover;
   background-position: center;
   border: none;
@@ -140,7 +162,6 @@ p{line-height:1.7}
   60% { transform: translateY(-3px); }
 }
 
-/* Flecha con las medidas y posición original de la capa + animación de rebote */
 .flecha-layer {
   position: absolute;
   top: 0; left: 0;
@@ -153,15 +174,14 @@ p{line-height:1.7}
   pointer-events: auto;
 }
 
-/* Área invisible para hacer clic directo sobre el sobre gráfico */
 .envelope-clickable-area {
   position: absolute;
-  top: 380px; left: 50%; transform: translateX(-50%);
-  width: 250px; height: 180px; cursor: pointer; z-index: 5;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 60%; height: 35%; cursor: pointer; z-index: 5;
 }
 
 /* ==========================================
-    ESTILOS GENERALES PARA CAPAS APILADAS (PNG ADAPTABLE)
+    ESTILOS GENERALES PARA CAPAS APILADAS
    ========================================== */
 .capa-animada {
   position: absolute;
@@ -177,9 +197,6 @@ p{line-height:1.7}
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ==========================================
-    VISTAS ANIMACIONES
-   ========================================== */
 #vista2.visible .trazos-capa { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
 #vista2.visible .textos-capa { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
 #vista2.visible .foto-capa { opacity: 1; transform: translateY(0); transition-delay: 0.5s; z-index: 2; }
@@ -212,14 +229,14 @@ p{line-height:1.7}
 #vista8.visible .music-capa-8 { opacity: 1; transform: translateY(0); transition-delay: 0.5s; z-index: 2; pointer-events: auto; }
 
 /* ==========================================
-    ESTILOS ESPECÍFICOS VISTA 5 (CARRUSEL)
+    ESTILOS VISTA 5 (CARRUSEL)
    ========================================== */
 .carrusel-wrapper-v5 {
   position: absolute;
-  top: 280px; 
+  top: 36%; 
   left: 0;
   width: 100%;
-  height: 440px; 
+  height: 60%; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -228,7 +245,7 @@ p{line-height:1.7}
 
 .carousel-container-v5 {
   width: 100%;
-  height: 400px; 
+  height: 85%; 
   display: flex;
   gap: 24px;
   overflow-x: auto; 
@@ -243,10 +260,7 @@ p{line-height:1.7}
   user-select: none;
 }
 
-.carousel-container-v5:active {
-  cursor: grabbing;
-}
-
+.carousel-container-v5:active { cursor: grabbing; }
 .carousel-container-v5::-webkit-scrollbar { display: none; }
 .carousel-container-v5 { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -288,25 +302,20 @@ p{line-height:1.7}
 .dot-v5.active { width: 22px; background-color: #ffffff; border-radius: 10px; }
 
 /* ==========================================
-    ESTILOS ESPECÍFICOS VISTA 7 (VALES)
+    ESTILOS VISTA 7 (VALES)
    ========================================== */
 .vales-wrapper-v7 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: auto;
 }
 
 .vales-wrapper-v7 img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -332,29 +341,25 @@ p{line-height:1.7}
 }
 
 /* ==========================================
-    ESTILOS ESPECÍFICOS VISTA 8 (MÚSICA)
+    ESTILOS VISTA 8 (MÚSICA)
    ========================================== */
 .music-wrapper-v8 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
 }
 
 .interactive-player-v8 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
 }
 
 .progress-v8 {
   position: absolute;
-  top: 563px; 
+  top: 73.5%; 
   left: 12%;
   width: 76%;
   height: 10px;
@@ -376,7 +381,7 @@ p{line-height:1.7}
 
 .time-v8 {
   position: absolute;
-  top: 583px; 
+  top: 76.2%; 
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
@@ -389,11 +394,10 @@ p{line-height:1.7}
 
 .play-v8 {
   position: absolute;
-  top: 623px; 
+  top: 81.5%; 
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
+  width: 60px; height: 60px;
   border-radius: 50%;
   border: 0;
   background: #dda15f;
@@ -408,8 +412,7 @@ p{line-height:1.7}
 .play-v8:hover { transform: translateX(-50%) scale(1.06); }
 
 .icon-play {
-  width: 0;
-  height: 0;
+  width: 0; height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 18px solid white;
@@ -425,56 +428,46 @@ p{line-height:1.7}
 
 .icon-pause span {
   display: block;
-  width: 5px;
-  height: 20px;
+  width: 5px; height: 20px;
   background: white;
   border-radius: 3px;
 }
 
 /* ==========================================
-    ESTILOS ESPECÍFICOS VISTA 9 (PASTEL)
+    ESTILOS VISTA 9 (PASTEL)
    ========================================== */
 .cake-wrapper-v9 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
 }
 
 .cake-wrapper-v9 img {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
   pointer-events: none;
   transition: opacity 0.6s ease;
 }
 
 .cake-clickable-area {
   position: absolute;
-  top: 325px;
-  left: 50%;
+  top: 42%; left: 50%;
   transform: translateX(-50%);
-  width: 240px;
-  height: 200px;
+  width: 55%; height: 26%;
   cursor: pointer;
   pointer-events: auto;
   z-index: 10;
 }
 
-.cake-wrapper-v9 img.inactive {
-  opacity: 0;
-}
+.cake-wrapper-v9 img.inactive { opacity: 0; }
 
 /* ==========================================
     RESTO DE SECCIONES (10, 11, 12)
    ========================================== */
-.gift{background:var(--paper);color:var(--ink);text-align:center; font-family: 'Poppins', sans-serif; padding: 40px 6vw;}
+.gift{background:var(--color-claro);color:var(--ink);text-align:center; font-family: 'Poppins', sans-serif; padding: 40px 6vw;}
 .gift-box{width:160px;height:120px;background:#c87d63;position:relative;margin:25px auto 20px;cursor:pointer;box-shadow:var(--shadow);border-radius:6px}
 .gift-box:before{content:"";position:absolute;left:64px;top:0;width:32px;height:100%;background:#e0c4b0}
 .lid{position:absolute;left:-10px;top:-24px;width:180px;height:34px;background:#b56a52;transition:.8s;z-index:2;border-radius:4px}
@@ -490,7 +483,7 @@ p{line-height:1.7}
 }
 .btn-gen:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.2)}
 
-.final{background:var(--paper);color:var(--ink);text-align:center;position:relative;padding:40px 6vw 50px; font-family: 'Poppins', sans-serif;}
+.final{background:var(--color-claro);color:var(--ink);text-align:center;position:relative;padding:40px 6vw 50px; font-family: 'Poppins', sans-serif;}
 .final h2{font-size:clamp(1.8rem, 6vw, 3rem); color:var(--accent); margin:10px 0; word-break: break-word;}
 .final-sub{font-family:"Brush Script MT","Segoe Script",cursive;font-size:clamp(2.2rem, 7vw, 4rem);color:var(--wine);line-height:1;margin-bottom:15px}
 .final-copy{max-width:500px;margin:0 auto 15px;color:var(--muted);font-size:0.85rem; padding: 0 10px;}
@@ -506,26 +499,19 @@ p{line-height:1.7}
 
 <div class="mobile-container" id="webMasterContainer">
 
-  <!-- VISTA 1: PORTADA DE SOBRE (PNG) - ACTUALIZADA -->
+  <!-- VISTA 1: PORTADA DE SOBRE (SVG) -->
   <section id="envelope">
     <div class="container">
-      <!-- 1. Fondo de la portada -->
-      <img src="img/01Fondo.png" alt="Fondo" class="capa-fondo">
+      <img src="img/01Fondo.svg" alt="Fondo" class="capa-fondo">
+      <img src="img/01Sobre_cerrado.svg" alt="Sobre cerrado" class="envelope-img" id="imgSobreCerrado">
+      <img src="img/01Sobre_abierto.svg" alt="Sobre abierto" class="envelope-img inactive" id="imgSobreAbierto">
       
-      <!-- 2. Sobre Cerrado / Sobre Abierto con manejo de estados y salto -->
-      <img src="img/01Sobre_cerrado.png" alt="Sobre cerrado" class="envelope-img" id="imgSobreCerrado">
-      <img src="img/01Sobre_abierto.png" alt="Sobre abierto" class="envelope-img inactive" id="imgSobreAbierto">
-      
-      <!-- 3. Botón y textos debajo del sobre -->
       <div class="interactive-prompt-v1" id="promptContainer">
         <button class="btn-abrir-carta" id="actionBtn">Abre la carta</button>
         <div class="subtext-abrir-carta" id="hintText">Pulsa para descubrir lo que preparé para ti.</div>
       </div>
 
-      <!-- 4. Flecha con tamaño original de la capa y animación -->
-      <img src="img/01Flecha_abajo.png" alt="Desliza hacia abajo" class="flecha-layer" id="flechaImg">
-
-      <!-- Zona invisible para hacer clic directo sobre el sobre -->
+      <img src="img/01Flecha_abajo.svg" alt="Desliza hacia abajo" class="flecha-layer" id="flechaImg">
       <div class="envelope-clickable-area" id="openClickArea"></div>
     </div>
   </section>
@@ -533,42 +519,42 @@ p{line-height:1.7}
   <main id="content" class="hidden">
 
     <!-- VISTA 2 -->
-    <section id="vista2" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/02fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/02trazos.png" alt="Trazos" class="capa-animada trazos-capa">
-        <img src="img/02textos.png" alt="Textos" class="capa-animada textos-capa">
-        <img src="img/02Foto.png" alt="Marco Foto" class="capa-animada foto-capa">
-        <img src="img/02textos_abajo.png" alt="Textos inferiores" class="capa-animada textos-abajo-capa">
+    <section id="vista2">
+      <div class="container">
+        <img src="img/02fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/02trazos.svg" alt="Trazos" class="capa-animada trazos-capa">
+        <img src="img/02textos.svg" alt="Textos" class="capa-animada textos-capa">
+        <img src="img/02Foto.svg" alt="Marco Foto" class="capa-animada foto-capa">
+        <img src="img/02textos_abajo.svg" alt="Textos inferiores" class="capa-animada textos-abajo-capa">
       </div>
     </section>
 
     <!-- VISTA 3 -->
-    <section id="vista3" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/03fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/03trazo.png" alt="Trazos" class="capa-animada trazos-capa-3">
-        <img src="img/03texto.png" alt="Textos" class="capa-animada texto-capa-3">
-        <img src="img/03calendario.png" alt="Calendario" class="capa-animada calendario-capa-3">
+    <section id="vista3">
+      <div class="container">
+        <img src="img/03fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/03trazo.svg" alt="Trazos" class="capa-animada trazos-capa-3">
+        <img src="img/03texto.svg" alt="Textos" class="capa-animada texto-capa-3">
+        <img src="img/03calendario.svg" alt="Calendario" class="capa-animada calendario-capa-3">
       </div>
     </section>
 
     <!-- VISTA 4 -->
-    <section id="vista4" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/04fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/04trazo.png" alt="Trazo" class="capa-animada trazo-capa-4">
-        <img src="img/04texto.png" alt="Texto" class="capa-animada texto-capa-4">
-        <img src="img/04elementos.png" alt="Elementos" class="capa-animada elementos-capa-4">
+    <section id="vista4">
+      <div class="container">
+        <img src="img/04fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/04trazo.svg" alt="Trazo" class="capa-animada trazo-capa-4">
+        <img src="img/04texto.svg" alt="Texto" class="capa-animada texto-capa-4">
+        <img src="img/04elementos.svg" alt="Elementos" class="capa-animada elementos-capa-4">
       </div>
     </section>
 
     <!-- VISTA 5 -->
-    <section id="vista5" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/05fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/05trazo.png" alt="Trazo" class="capa-animada trazo-capa-5">
-        <img src="img/05texto.png" alt="Texto" class="capa-animada texto-capa-5">
+    <section id="vista5">
+      <div class="container">
+        <img src="img/05fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/05trazo.svg" alt="Trazo" class="capa-animada trazo-capa-5">
+        <img src="img/05texto.svg" alt="Texto" class="capa-animada texto-capa-5">
         
         <div class="capa-animada carrusel-capa-5 carrusel-wrapper-v5">
           <div class="carousel-container-v5" id="carouselV5">
@@ -600,56 +586,56 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 6 -->
-    <section id="vista6" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/06fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/06trazo.png" alt="Trazo" class="capa-animada trazo-capa-6">
-        <img src="img/06texto.png" alt="Texto" class="capa-animada texto-capa-6">
-        <img src="img/06cuadro1.png" alt="Cuadro 1" class="capa-animada cuadro1-capa-6">
-        <img src="img/06cuadro2.png" alt="Cuadro 2" class="capa-animada cuadro2-capa-6">
-        <img src="img/06cuadro3.png" alt="Cuadro 3" class="capa-animada cuadro3-capa-6">
+    <section id="vista6">
+      <div class="container">
+        <img src="img/06fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/06trazo.svg" alt="Trazo" class="capa-animada trazo-capa-6">
+        <img src="img/06texto.svg" alt="Texto" class="capa-animada texto-capa-6">
+        <img src="img/06cuadro1.svg" alt="Cuadro 1" class="capa-animada cuadro1-capa-6">
+        <img src="img/06cuadro2.svg" alt="Cuadro 2" class="capa-animada cuadro2-capa-6">
+        <img src="img/06cuadro3.svg" alt="Cuadro 3" class="capa-animada cuadro3-capa-6">
       </div>
     </section>
 
     <!-- VISTA 7 -->
-    <section id="vista7" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/07fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/07trazo.png" alt="Trazo" class="capa-animada trazo-capa-7">
-        <img src="img/07texto.png" alt="Texto" class="capa-animada texto-capa-7">
+    <section id="vista7">
+      <div class="container">
+        <img src="img/07fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/07trazo.svg" alt="Trazo" class="capa-animada trazo-capa-7">
+        <img src="img/07texto.svg" alt="Texto" class="capa-animada texto-capa-7">
         
         <div class="capa-animada vales-capa-7 vales-wrapper-v7">
-          <div class="vale-item" id="valeBeso" style="top: 200px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07beso1.png" alt="Beso 1" id="imgBeso1">
-            <img src="img/07beso2.png" alt="Beso 2" id="imgBeso2" class="inactive">
+          <div class="vale-item" id="valeBeso" style="top: 26%; left: 0px; width: 100%; height: 10%;">
+            <img src="img/07beso1.svg" alt="Beso 1" id="imgBeso1">
+            <img src="img/07beso2.svg" alt="Beso 2" id="imgBeso2" class="inactive">
           </div>
-          <div class="vale-item" id="valeCine" style="top: 315px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07cine1.png" alt="Cine 1" id="imgCine1">
-            <img src="img/07cine2.png" alt="Cine 2" id="imgCine2" class="inactive">
+          <div class="vale-item" id="valeCine" style="top: 41%; left: 0px; width: 100%; height: 10%;">
+            <img src="img/07cine1.svg" alt="Cine 1" id="imgCine1">
+            <img src="img/07cine2.svg" alt="Cine 2" id="imgCine2" class="inactive">
           </div>
-          <div class="vale-item" id="valeComida" style="top: 430px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07comida1.png" alt="Comida 1" id="imgComida1">
-            <img src="img/07comida2.png" alt="Comida 2" id="imgComida2" class="inactive">
+          <div class="vale-item" id="valeComida" style="top: 56%; left: 0px; width: 100%; height: 10%;">
+            <img src="img/07comida1.svg" alt="Comida 1" id="imgComida1">
+            <img src="img/07comida2.svg" alt="Comida 2" id="imgComida2" class="inactive">
           </div>
-          <div class="vale-item" id="valeAbrazo" style="top: 545px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07abrazo1.png" alt="Abrazo 1" id="imgAbrazo1">
-            <img src="img/07abrazo2.png" alt="Abrazo 2" id="imgAbrazo2" class="inactive">
+          <div class="vale-item" id="valeAbrazo" style="top: 71%; left: 0px; width: 100%; height: 10%;">
+            <img src="img/07abrazo1.svg" alt="Abrazo 1" id="imgAbrazo1">
+            <img src="img/07abrazo2.svg" alt="Abrazo 2" id="imgAbrazo2" class="inactive">
           </div>
-          <div class="vale-item" id="valeDeseo" style="top: 660px; left: 0px; width: 100%; height: 78px;">
-            <img src="img/07deseo1.png" alt="Deseo 1" id="imgDeseo1">
-            <img src="img/07deseo2.png" alt="Deseo 2" id="imgDeseo2" class="inactive">
+          <div class="vale-item" id="valeDeseo" style="top: 86%; left: 0px; width: 100%; height: 10%;">
+            <img src="img/07deseo1.svg" alt="Deseo 1" id="imgDeseo1">
+            <img src="img/07deseo2.svg" alt="Deseo 2" id="imgDeseo2" class="inactive">
           </div>
         </div>
       </div>
     </section>
 
     <!-- VISTA 8: NUESTRA CANCIÓN -->
-    <section id="vista8" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/08fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/08trazo.png" alt="Trazo" class="capa-animada trazo-capa-8">
-        <img src="img/08music.png" alt="Música" class="capa-animada music-capa-8 music-wrapper-v8">
-        <img src="img/08texto.png" alt="Texto" class="capa-animada music-capa-8 music-wrapper-v8" style="z-index: 3;">
+    <section id="vista8">
+      <div class="container">
+        <img src="img/08fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/08trazo.svg" alt="Trazo" class="capa-animada trazo-capa-8">
+        <img src="img/08music.svg" alt="Música" class="capa-animada music-capa-8 music-wrapper-v8">
+        <img src="img/08texto.svg" alt="Texto" class="capa-animada music-capa-8 music-wrapper-v8" style="z-index: 3;">
         
         <audio id="audioCancion" src="audio/musica.mp3" preload="auto"></audio>
 
@@ -666,25 +652,23 @@ p{line-height:1.7}
     </section>
 
     <!-- VISTA 9: PASTEL INTERACTIVO -->
-    <section id="vista9" style="background-color: var(--paper); height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0;">
-      <div class="container" style="width: 100%; height: 100%; position: relative;">
-        <img src="img/09fondo.png" alt="Fondo" class="capa-fondo">
-        <img src="img/09trazo.png" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
-        <img src="img/09texto.png" alt="Texto" class="capa-animada" style="opacity: 1; transform: translateY(0); z-index: 2;">
+    <section id="vista9">
+      <div class="container">
+        <img src="img/09fondo.svg" alt="Fondo" class="capa-fondo">
+        <img src="img/09trazo.svg" alt="Trazo" class="capa-animada" style="opacity: 1; transform: translateY(0);">
+        <img src="img/09texto.svg" alt="Texto" class="capa-animada" style="opacity: 1; transform: translateY(0); z-index: 2;">
         
-        <!-- Capas del pastel interactivo en PNG -->
         <div class="cake-wrapper-v9" style="z-index: 3;">
-          <img src="img/09pasteloff.png" alt="Pastel apagado" id="imgPastelOff">
-          <img src="img/09pastelon.png" alt="Pastel encendido" id="imgPastelOn" class="inactive">
+          <img src="img/09pasteloff.svg" alt="Pastel apagado" id="imgPastelOff">
+          <img src="img/09pastelon.svg" alt="Pastel encendido" id="imgPastelOn" class="inactive">
         </div>
 
-        <!-- Zona interactiva para hacer clic sobre el pastel -->
         <div class="cake-clickable-area" id="cakeToggleArea"></div>
       </div>
     </section>
 
     <!-- 10 & 11. EL REGALO SORPRESA -->
-    <section class="gift" style="height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
+    <section class="gift" style="aspect-ratio: auto; min-height: 100vh;">
       <div class="container" style="padding: 40px 6vw; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
         <div class="kicker-texto" style="color:var(--wine)">10 · Otro regalo</div>
         <h2>Resulta que todavía me quedaba<br>una cosa más...</h2>
@@ -703,7 +687,7 @@ p{line-height:1.7}
     </section>
 
     <!-- 12. CIERRE -->
-    <section class="final" style="height: 765px; width: 100%; position: relative; overflow: hidden; flex-shrink: 0; display:flex; align-items:center; justify-content:center;">
+    <section class="final" style="aspect-ratio: auto; min-height: 100vh;">
       <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
         <div class="kicker-texto" style="margin-bottom:10px; color:var(--wine)">El final de la carta</div>
         <h2>Feliz Cumpleaños</h2>
@@ -734,7 +718,6 @@ const flechaImg = document.getElementById('flechaImg');
 const content = document.getElementById('content');
 
 function abrirCarta() {
-  // Aplicamos clase de salto dinámico antes de cambiar el estado
   imgSobreCerrado.classList.add('jump');
   
   setTimeout(() => {
@@ -748,20 +731,15 @@ function abrirCarta() {
       imgSobreAbierto.classList.remove('jump');
     }, 200);
 
-    // Ocultamos el botón y su texto debajo
     promptContainer.style.display = 'none';
     openClickArea.style.display = 'none';
-
-    // Mostramos la flecha con su tamaño y posición original
     flechaImg.style.display = 'block';
   }, 150);
 }
 
-// Eventos de clic para abrir el sobre (tanto botón como clic directo sobre el gráfico)
 actionBtn.addEventListener('click', abrirCarta);
 openClickArea.addEventListener('click', abrirCarta);
 
-// Al hacer clic en la flecha, se despliegan los siguientes bloques y se hace scroll
 flechaImg.addEventListener('click', () => {
   content.classList.remove('hidden');
   const primeraSeccion = content.querySelector('section');
