@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1920">
+  <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#Transparancy_grid);
+      }
+
+      .st1 {
+        fill: none;
+      }
+
+      .st2 {
+        fill: #bebebe;
+      }
+
+      .st3 {
+        fill: #d0d0ce;
+      }
+    </style>
+    <pattern id="Transparancy_grid" data-name="Transparancy grid" x="0" y="0" width="20" height="20" patternTransform="translate(104.89 78.13) scale(5.95)" patternUnits="userSpaceOnUse" viewBox="0 0 20 20">
+      <g>
+        <rect class="st1" width="20" height="20"/>
+        <rect class="st2" x="0" y="0" width="10" height="10"/>
+        <rect class="st2" x="10" y="10" width="10" height="10"/>
+        <rect class="st3" x="10" y="0" width="10" height="10"/>
+        <rect class="st3" x="0" y="10" width="10" height="10"/>
+      </g>
+    </pattern>
+  </defs>
+  <circle class="st0" cx="538.48" cy="1261.75" r="390" transform="translate(-734.48 750.32) rotate(-45)"/>
+</svg>
